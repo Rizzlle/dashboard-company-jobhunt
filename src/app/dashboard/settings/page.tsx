@@ -1,25 +1,32 @@
-import OverviewCompanyForm from "@/components/OverviewCompanyForm";
+import OverviewCompanyForm from "@/components/form/OverviewCompanyForm";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
 import prisma from "../../../../lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import SocialMediaCompanyForm from "@/components/form/SocialMediaCompanyForm";
+import TeamCompany from "@/containers/TeamCompany";
 
 export const revalidate = 0;
 
 async function getData(id: string) {
-	const data = await prisma.companyoverview.findFirst({
+	const data = await prisma.company.findFirst({
 		where: {
-			companyId: id
-		}
+			id: id,
+		},
+		include: {
+			companyOverview: true,
+			companySocialMedia: true,
+			companyTeam: true,
+		},
 	});
 
 	return data;
 }
 
 export default async function SettingsPage() {
-	const session = await getServerSession(authOptions)
-	const data = await getData(session?.user.id)
+	const session = await getServerSession(authOptions);
+	const data = await getData(session?.user.id);
 
 	return (
 		<div>
@@ -35,13 +42,15 @@ export default async function SettingsPage() {
 					<TabsTrigger value="teams">Teams</TabsTrigger>
 				</TabsList>
 				<TabsContent value="overview">
-					<OverviewCompanyForm data={data!!} />
+					<OverviewCompanyForm data={data?.companyOverview[0]} />
 				</TabsContent>
 				<TabsContent value="socialLink">
-					<div>social links</div>
+					<SocialMediaCompanyForm
+						data={data?.companySocialMedia[0]}
+					/>
 				</TabsContent>
 				<TabsContent value="teams">
-					<div>teams</div>
+					<TeamCompany data={data?.companyTeam} />
 				</TabsContent>
 			</Tabs>
 		</div>

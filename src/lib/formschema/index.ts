@@ -61,3 +61,18 @@ export const overviewSchema = z.object({
 		.nonempty({ message: "Tech stack is required" }),
 	description: z.string().min(1, { message: "Description is required" }),
 });
+
+export const socialMediaSchema = z.object({
+	instagram: z.string(),
+	twitter: z.string(),
+	facebook: z.string(),
+	linkedin: z.string(),
+	youtube: z.string(),
+});
+
+export const teamCompanySchema = z.object({
+	name: z.string().min(1, { message: "Name is required" }),
+	position: z.string().min(1, { message: "Position is required" }),
+	instagram: z.string().min(1, { message: "Instagram is required" }),
+	linkedin: z.string().min(1, { message: "LinkedIn is required" }),
+});

@@ -43,6 +43,27 @@ model Companyoverview {
   companyId   String?
 }
 
+model CompanySocialMedia {
+  id          String @id @default(cuid())
+  instagram   String
+  twitter     String
+  facebook    String
+  linkedin    String
+  youtube     String
+  company     Company? @relation(fields: [companyId], references: [id])
+  companyId   String?
+}
+
+model CompanyTeam {
+  id        String @id @default(cuid())
+  name      String
+  position  String
+  instagram String
+  linkedin  String
+  company     Company? @relation(fields: [companyId], references: [id])
+  companyId   String?
+}
+
 model Company {
   id              String            @id @default(cuid())
   name            String
@@ -50,4 +71,6 @@ model Company {
   email           String            @unique
   jobs            Job[]
   companyOverview Companyoverview[]
+  companySocialMedia CompanySocialMedia[]
+  companyTeam     CompanyTeam[]
 }

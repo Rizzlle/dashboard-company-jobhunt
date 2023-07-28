@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form } from "../ui/form";
+import { Form } from "../../ui/form";
 import ButtonStep from "./ButtonStep";
 import StepFirst from "./StepFirst";
 import StepSecond from "./StepSecond";

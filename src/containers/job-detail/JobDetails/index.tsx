@@ -12,8 +12,6 @@ interface Props {
 }
 
 export default function JobDetails({ job }: Props) {
-	console.log(job);
-
 	return (
 		<div>
 			<div className="grid grid-cols-3 w-full gap-5">

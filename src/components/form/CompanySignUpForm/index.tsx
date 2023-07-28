@@ -4,15 +4,15 @@ import { signUpSchema } from "@/lib/formschema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
+} from "../../ui/form";
+import { Input } from "../../ui/input";
 import { hashPassword } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

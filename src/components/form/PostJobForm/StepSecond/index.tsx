@@ -1,11 +1,9 @@
-import { cn } from "@/lib/utils";
-import React from "react";
-import TitleForm from "../TitleForm";
 import { Separator } from "@/components/ui/separator";
-import FieldWrapper from "../FieldItem";
+import { cn } from "@/lib/utils";
 import FieldDescription from "../FieldDescription";
+import FieldWrapper from "../FieldItem";
 import RichEditor from "../RichEditor";
-import { FormField, FormItem, FormMessage } from "@/components/ui/form";
+import TitleForm from "../TitleForm";
 
 interface Props {
 	form: any;
@@ -36,15 +34,6 @@ export default function StepSecond({ form }: Props) {
 						name="jobDescription"
 						key="jobDescription"
 					/>
-					<FormField
-						control={form.control}
-						name="jobDescription"
-						render={({ field }) => (
-							<FormItem>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
 				</div>
 			</FieldWrapper>
 			<Separator />
@@ -59,15 +48,6 @@ export default function StepSecond({ form }: Props) {
 						key="responsibility"
 						name="responsibility"
 					/>
-					<FormField
-						control={form.control}
-						name="responsibility"
-						render={({ field }) => (
-							<FormItem>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
 				</div>
 			</FieldWrapper>
 			<Separator />
@@ -78,15 +58,6 @@ export default function StepSecond({ form }: Props) {
 				/>
 				<div className="w-[65%]">
 					<RichEditor form={form} key="whoYouAre" name="whoYouAre" />
-					<FormField
-						control={form.control}
-						name="whoYouAre"
-						render={({ field }) => (
-							<FormItem>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
 				</div>
 			</FieldWrapper>
 			<Separator />
@@ -100,15 +71,6 @@ export default function StepSecond({ form }: Props) {
 						form={form}
 						key="niceToHaves"
 						name="NiceTohaves"
-					/>
-					<FormField
-						control={form.control}
-						name="NiceTohaves"
-						render={({ field }) => (
-							<FormItem>
-								<FormMessage />
-							</FormItem>
-						)}
 					/>
 				</div>
 			</FieldWrapper>

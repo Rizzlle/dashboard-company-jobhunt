@@ -1,4 +1,4 @@
-import PostJobForm from "@/components/PostJobForm";
+import PostJobForm from "@/components/form/PostJobForm";
 
 export default function PostJob() {
 	return (

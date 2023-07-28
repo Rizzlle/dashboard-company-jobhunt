@@ -10,8 +10,6 @@ import React, { ReactNode } from "react";
 export default function LayoutAuth({ children }: { children: ReactNode }) {
 	const pathname = usePathname();
 
-	console.log(pathname);
-
 	return (
 		<>
 			<div className="md:hidden">

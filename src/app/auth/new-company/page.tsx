@@ -1,5 +1,5 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import CompanySignUpForm from "@/components/CompanySignUpForm";
+import CompanySignUpForm from "@/components/form/CompanySignUpForm";
 import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
