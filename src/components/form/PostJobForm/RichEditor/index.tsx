@@ -1,32 +1,50 @@
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+"use client";
+
+import { useEffect, useRef } from "react";
 import { FormField, FormItem, FormMessage } from "@/components/ui/form";
 
 interface Props {
 	form?: any;
 	name?: string;
+	editorLoaded: boolean;
 }
 
-export default function RichEditor({ form, name }: Props) {
+export default function RichEditor({ form, name, editorLoaded }: Props) {
+	const editorRef = useRef<any>();
+	const { CKEditor, ClassicEditor } = editorRef.current || {};
+
+	useEffect(() => {
+		editorRef.current = {
+			CKEditor: require("@ckeditor/ckeditor5-react").CKEditor,
+			ClassicEditor: require("@ckeditor/ckeditor5-build-classic"),
+		};
+	}, []);
+
 	return (
 		<>
-			<CKEditor
-				editor={ClassicEditor}
-				data={form.getValues(name)}
-				onChange={(event, editor) => {
-					const data = editor.getData();
-					form.setValue(name, data);
-				}}
-			/>
-			<FormField
-				control={form.control}
-				name={name!!}
-				render={({ field }) => (
-					<FormItem>
-						<FormMessage className="mt-3" />
-					</FormItem>
-				)}
-			/>
+			{editorLoaded ? (
+				<div>
+					<CKEditor
+						editor={ClassicEditor}
+						data={form.getValues(name)}
+						onChange={(event: any, editor: any) => {
+							const data = editor.getData();
+							form.setValue(name, data);
+						}}
+					/>
+					<FormField
+						control={form.control}
+						name={name!!}
+						render={({ field }) => (
+							<FormItem>
+								<FormMessage className="mt-3" />
+							</FormItem>
+						)}
+					/>
+				</div>
+			) : (
+				<div>Loading...</div>
+			)}
 		</>
 	);
 }

@@ -4,12 +4,19 @@ import FieldDescription from "../FieldDescription";
 import FieldWrapper from "../FieldItem";
 import RichEditor from "../RichEditor";
 import TitleForm from "../TitleForm";
+import { useState, useEffect } from "react";
 
 interface Props {
 	form: any;
 }
 
 export default function StepSecond({ form }: Props) {
+	const [editorLoaded, setEditorLoaded] = useState<boolean>(false);
+
+	useEffect(() => {
+		setEditorLoaded(true);
+	}, []);
+
 	return (
 		<div
 			id="step-2"
@@ -33,6 +40,7 @@ export default function StepSecond({ form }: Props) {
 						form={form}
 						name="jobDescription"
 						key="jobDescription"
+						editorLoaded={editorLoaded}
 					/>
 				</div>
 			</FieldWrapper>
@@ -47,6 +55,7 @@ export default function StepSecond({ form }: Props) {
 						form={form}
 						key="responsibility"
 						name="responsibility"
+						editorLoaded={editorLoaded}
 					/>
 				</div>
 			</FieldWrapper>
@@ -57,7 +66,12 @@ export default function StepSecond({ form }: Props) {
 					subtitle="Add your preferred candidates <br /> qualifications"
 				/>
 				<div className="w-[65%]">
-					<RichEditor form={form} key="whoYouAre" name="whoYouAre" />
+					<RichEditor
+						form={form}
+						key="whoYouAre"
+						name="whoYouAre"
+						editorLoaded={editorLoaded}
+					/>
 				</div>
 			</FieldWrapper>
 			<Separator />
@@ -71,6 +85,7 @@ export default function StepSecond({ form }: Props) {
 						form={form}
 						key="niceToHaves"
 						name="NiceTohaves"
+						editorLoaded={editorLoaded}
 					/>
 				</div>
 			</FieldWrapper>

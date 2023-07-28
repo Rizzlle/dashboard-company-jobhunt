@@ -156,15 +156,7 @@ export default function PostJobForm() {
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
 				<Stepper state={form.getValues("state")!!} />
-				<StepFirst
-					inputSkillRef={inputSkillRef}
-					hideSkill={hideSkill}
-					setHideSkill={updateHideSkill}
-					skills={skills}
-					setSkills={updateSkills}
-					handleSaveSkill={handleSaveSkill}
-					form={form}
-				/>
+				<StepFirst skills={skills} form={form} />
 				<StepSecond form={form} />
 				<StepThree form={form} />
 				<ButtonStep form={form} nextStep={nextStep} skills={skills} />

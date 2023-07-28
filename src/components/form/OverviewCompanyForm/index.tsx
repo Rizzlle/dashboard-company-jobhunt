@@ -14,7 +14,7 @@ import { supabaseUploadImg } from "@/lib/supabase";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import CustomUpload from "../../helpers/CustomUpload";
@@ -47,6 +47,7 @@ interface Props {
 
 export default function OverviewCompanyForm({ data }: Props) {
 	const [isSubmit, setSubmit] = useState<boolean>(false);
+	const [editorLoaded, setEditorLoaded] = useState<boolean>(false);
 
 	const { toast } = useToast();
 	const { data: session } = useSession();
@@ -110,6 +111,10 @@ export default function OverviewCompanyForm({ data }: Props) {
 			});
 		}
 	};
+
+	useEffect(() => {
+		setEditorLoaded(true);
+	}, []);
 
 	return (
 		<Form {...form}>
@@ -215,6 +220,7 @@ export default function OverviewCompanyForm({ data }: Props) {
 							form={form}
 							key="description"
 							name="description"
+							editorLoaded={editorLoaded}
 						/>
 					</div>
 				</FieldWrapper>

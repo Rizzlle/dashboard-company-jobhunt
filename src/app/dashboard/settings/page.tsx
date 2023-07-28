@@ -26,7 +26,7 @@ async function getData(id: string) {
 
 export default async function SettingsPage() {
 	const session = await getServerSession(authOptions);
-	const data = await getData(session?.user.id);
+	const data: any = await getData(session?.user.id);
 
 	return (
 		<div>

@@ -11,7 +11,7 @@ async function getData() {
 }
 
 export default async function JobListing() {
-	const data = await getData();
+	const data: any = await getData();
 
 	return (
 		<div>

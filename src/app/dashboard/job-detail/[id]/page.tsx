@@ -1,10 +1,10 @@
 import React from "react";
 import prisma from "../../../../../lib/prisma";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Applicants from "@/components/job-detail/Applicants";
-import JobDetails from "@/components/job-detail/JobDetails";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Applicants from "@/containers/job-detail/Applicants";
+import JobDetails from "@/containers/job-detail/JobDetails";
 
 export const revalidate = 0;
 
