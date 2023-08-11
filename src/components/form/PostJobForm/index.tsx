@@ -15,6 +15,7 @@ import StepFirst from "./StepFirst";
 import StepSecond from "./StepSecond";
 import StepThree from "./StepThree";
 import Stepper from "./Stepper";
+import { useToast } from "@/components/ui/use-toast";
 
 const defaultValueBenefits = [
 	{
@@ -38,32 +39,8 @@ export default function PostJobForm() {
 	const router = useRouter();
 	const { data: session } = useSession();
 
-	const [hideSkill, setHideSkill] = useState<boolean>(false);
+	const { toast } = useToast();
 	const [skills, setSkills] = useState<any>([]);
-
-	const inputSkillRef = useRef<HTMLInputElement>(null);
-
-	const updateHideSkill = () => {
-		setHideSkill(!hideSkill);
-	};
-
-	const updateSkills = (item: any) => {
-		setSkills(skills.filter((skill: string) => item !== skill));
-	};
-
-	const handleSaveSkill = () => {
-		const value = inputSkillRef.current?.value;
-
-		if (value === "") {
-			return;
-		}
-
-		const newValue: any = [...skills, value];
-
-		setSkills(newValue);
-
-		form.setValue("requiredSkills", newValue);
-	};
 
 	const form = useForm<z.infer<typeof jobFormSchema>>({
 		resolver: zodResolver(jobFormSchema),
@@ -73,7 +50,7 @@ export default function PostJobForm() {
 			jobType: undefined,
 			salaryFrom: undefined,
 			salaryTo: undefined,
-			category: undefined,
+			categoryId: undefined,
 			requiredSkills: [],
 			jobDescription: undefined,
 			NiceTohaves: undefined,
@@ -90,7 +67,7 @@ export default function PostJobForm() {
 				needs: 10,
 				description: values.jobDescription,
 				dueDate: moment().add(1, "M").toDate(),
-				jobCategory: values.category,
+				jobCategory: values.categoryId,
 				jobType: values.jobType,
 				niceToHaves: values.NiceTohaves,
 				responsibility: values.responsibility,
@@ -101,6 +78,7 @@ export default function PostJobForm() {
 				benefits: values.benefits as Prisma.JsonArray,
 				datePosted: moment().toDate(),
 				companyId: session?.user.id,
+				categoryId: values.categoryId,
 				requiredSkills: values.requiredSkills,
 			};
 
@@ -111,6 +89,10 @@ export default function PostJobForm() {
 			});
 			await router.push("/dashboard/job-listing");
 		} catch (error) {
+			toast({
+				title: "Error occured",
+				description: "Please try again",
+			});
 			console.log(error);
 		}
 	};

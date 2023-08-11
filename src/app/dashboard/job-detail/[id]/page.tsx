@@ -1,10 +1,8 @@
-import React from "react";
-import prisma from "../../../../../lib/prisma";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useRouter } from "next/router";
-import Link from "next/link";
 import Applicants from "@/containers/job-detail/Applicants";
 import JobDetails from "@/containers/job-detail/JobDetails";
+import Link from "next/link";
+import prisma from "../../../../../lib/prisma";
 
 export const revalidate = 0;
 
@@ -12,6 +10,9 @@ async function getData(id: string) {
 	const data = await prisma.job.findFirst({
 		where: {
 			id,
+		},
+		include: {
+			category: true,
 		},
 	});
 
@@ -51,7 +52,7 @@ export default async function JobDetail({
 						{data?.roles}
 					</div>
 					<div>
-						{data?.jobCategory} · {data?.jobType} ·{" "}
+						{data?.category?.name} · {data?.jobType} ·{" "}
 						{data?.applicants}
 						<span className="text-gray-500">
 							/{data?.needs} Hired

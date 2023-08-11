@@ -24,8 +24,10 @@ model Job {
   whoYouAre      String
   niceToHaves    String
   benefits       Json
+  category       CategoryJob? @relation(fields: [categoryId], references: [id])
   company        Company? @relation(fields: [companyId], references: [id])
   companyId      String?
+  categoryId     String?
 }
 
 model Companyoverview {
@@ -73,4 +75,10 @@ model Company {
   companyOverview Companyoverview[]
   companySocialMedia CompanySocialMedia[]
   companyTeam     CompanyTeam[]
+}
+
+model CategoryJob {
+  id      String @id @default(cuid())
+  name    String
+  job     Job[]
 }

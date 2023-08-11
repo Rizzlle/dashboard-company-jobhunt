@@ -1,3 +1,13 @@
+export type optionsTypes = {
+	label: string;
+	value: string;
+};
+
+export type categoryJobTypes = {
+	id: string;
+	name: string;
+};
+
 export const SELECT_JOB_CATEGORIES = [
 	{
 		label: "Marketing",

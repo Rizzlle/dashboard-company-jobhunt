@@ -81,7 +81,7 @@ export default function JobDetails({ job }: Props) {
 							Categories
 						</div>
 						<Badge className="rounded-full py-2 px-5 text-green-500 bg-green-100">
-							{job?.jobCategory}
+							{job?.category?.name}
 						</Badge>
 					</div>
 

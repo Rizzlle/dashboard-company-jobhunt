@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import bcrypt from "bcryptjs";
+import { categoryJobTypes, optionsTypes } from "@/constants";
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -19,4 +20,13 @@ export const comparePassword = async (
 	const isMatch = await bcrypt.compare(password, hashedPassword);
 
 	return isMatch;
+};
+
+export const parseCategoriesJob = (categories: categoryJobTypes[]) => {
+	return categories.map((option: categoryJobTypes, i: number) => {
+		return {
+			label: option.name,
+			value: option.id,
+		};
+	});
 };

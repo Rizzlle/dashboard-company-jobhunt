@@ -4,6 +4,7 @@ import RadioFormField from "@/components/helpers/RadioFormField";
 import SelectFormField from "@/components/helpers/SelectFormField";
 import { Separator } from "@/components/ui/separator";
 import { SELECT_JOB_CATEGORIES, SELECT_JOB_TYPE } from "@/constants";
+import useJobCategories from "@/hooks/useJobCategories";
 import { cn } from "@/lib/utils";
 import TitleForm from "../TitleForm";
 
@@ -13,6 +14,8 @@ interface Props {
 }
 
 export default function StepFirst({ form, skills }: Props) {
+	const categories = useJobCategories();
+
 	return (
 		<div
 			id="step-1"
@@ -98,11 +101,11 @@ export default function StepFirst({ form, skills }: Props) {
 				<div>
 					<SelectFormField
 						form={form}
-						name="category"
+						name="categoryId"
 						label="Select Job Categories"
 						inputClassName="w-[300px]"
 						placeholder="Select Job Categories"
-						options={SELECT_JOB_CATEGORIES}
+						options={categories.data}
 					/>
 				</div>
 			</div>

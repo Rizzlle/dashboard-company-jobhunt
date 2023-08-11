@@ -10,7 +10,7 @@ export const jobFormSchema = z.object({
 	}),
 	salaryFrom: z.string({ required_error: "Salary From must be filled" }),
 	salaryTo: z.string({ required_error: "Salary To must be filled" }),
-	category: z.string({ required_error: "You need to select a category" }),
+	categoryId: z.string({ required_error: "You need to select a category" }),
 	requiredSkills: z
 		.string()
 		.array()
