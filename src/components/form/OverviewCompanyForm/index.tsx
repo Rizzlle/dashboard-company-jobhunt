@@ -56,15 +56,15 @@ export default function OverviewCompanyForm({ data }: Props) {
 	const form = useForm<z.infer<typeof overviewSchema>>({
 		resolver: zodResolver(overviewSchema),
 		defaultValues: {
-			description: data.description,
-			employee: data.employee,
-			image: data.image,
-			industry: data.industry,
-			location: data.location,
-			name: data.name,
-			techStack: data.techStack,
-			website: data.website,
-			dateFounded: data.dateFounded,
+			description: data?.description,
+			employee: data?.employee,
+			image: data?.image,
+			industry: data?.industry,
+			location: data?.location,
+			name: data?.name,
+			techStack: data?.techStack,
+			website: data?.website,
+			dateFounded: data?.dateFounded,
 		},
 	});
 
@@ -201,7 +201,7 @@ export default function OverviewCompanyForm({ data }: Props) {
 						<MultipleInputFormField
 							form={form}
 							name="techStack"
-							defaultValues={data.techStack}
+							defaultValues={data?.techStack}
 							label="Add Techstack"
 							placeholder="add tech stack"
 						/>

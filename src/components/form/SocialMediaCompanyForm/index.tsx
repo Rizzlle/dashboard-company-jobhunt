@@ -38,11 +38,11 @@ const SocialMediaCompanyForm: FC<SocialMediaCompanyFormProps> = ({ data }) => {
 	const form = useForm<z.infer<typeof socialMediaSchema>>({
 		resolver: zodResolver(socialMediaSchema),
 		defaultValues: {
-			facebook: data.facebook,
-			instagram: data.instagram,
-			linkedin: data.twitter,
-			twitter: data.linkedin,
-			youtube: data.youtube,
+			facebook: data?.facebook,
+			instagram: data?.instagram,
+			linkedin: data?.twitter,
+			twitter: data?.linkedin,
+			youtube: data?.youtube,
 		},
 	});
 
