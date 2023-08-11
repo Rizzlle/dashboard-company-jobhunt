@@ -1,4 +1,7 @@
+"use client";
+
 import PostJobForm from "@/components/form/PostJobForm";
+import SWRProvider from "@/providers/SWRProvider";
 
 export default function PostJob() {
 	return (
@@ -21,7 +24,9 @@ export default function PostJob() {
 				<span className="text-2xl font-semibold">Post a Job</span>
 			</div>
 
-			<PostJobForm />
+			<SWRProvider>
+				<PostJobForm />
+			</SWRProvider>
 		</div>
 	);
 }
