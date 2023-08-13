@@ -99,27 +99,27 @@ export const SELECT_INDUSTRY_COMPANY = [
 
 export const SELECT_EMPLOYEE_COMPANY = [
 	{
-		value: "1,50",
+		value: "1-50",
 		label: "1-50",
 	},
 	{
-		value: "51,150",
+		value: "51-150",
 		label: "51-150",
 	},
 	{
-		value: "151,250",
+		value: "151-250",
 		label: "151-250",
 	},
 	{
-		value: "251,500",
+		value: "251-500",
 		label: "251-500",
 	},
 	{
-		value: "501,1000",
+		value: "501-1000",
 		label: "501-1000",
 	},
 	{
-		value: "1000",
+		value: "1000-above",
 		label: "1000-above",
 	},
 ];
