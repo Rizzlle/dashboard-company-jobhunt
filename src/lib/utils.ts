@@ -22,8 +22,8 @@ export const comparePassword = async (
 	return isMatch;
 };
 
-export const parseCategoriesJob = (categories: categoryJobTypes[]) => {
-	return categories.map((option: categoryJobTypes, i: number) => {
+export const parseCategoriesJob = (categories: any[]) => {
+	return categories.map((option: any, i: number) => {
 		return {
 			label: option.name,
 			value: option.id,
