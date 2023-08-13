@@ -4,7 +4,7 @@ export type optionsTypes = {
 };
 
 export type categoryJobTypes = {
-	id: string;
+	label: string;
 	name: string;
 };
 
@@ -46,37 +46,81 @@ export const SELECT_LOCATION_COMPANY = [
 	},
 ];
 
-export const SELECT_EMPLOYEE_COMPANY = [
+export const SELECT_INDUSTRY_COMPANY = [
 	{
-		label: "1-50",
-		value: "1-50",
+		label: "Advertising",
+		value: "Advertising",
 	},
 	{
-		label: "50-100",
-		value: "50-100",
+		label: "Business Service",
+		value: "Business Service",
 	},
 	{
-		label: "100-150",
-		value: "100-150",
+		label: "Blockchain",
+		value: "Blockchain",
 	},
 	{
-		label: ">200",
-		value: ">200",
+		label: "Cloud",
+		value: "Cloud",
+	},
+	{
+		label: "Consumer Tech",
+		value: "Consumer Tech",
+	},
+	{
+		label: "Education",
+		value: "Education",
+	},
+	{
+		label: "Fintech",
+		value: "Fintech",
+	},
+	{
+		label: "Gaming",
+		value: "Gaming",
+	},
+	{
+		label: "Food & Beverage",
+		value: "Food & Beverage",
+	},
+	{
+		label: "Healthcare",
+		value: "Healthcare",
+	},
+	{
+		label: "Hosting",
+		value: "Hosting",
+	},
+	{
+		label: "Media",
+		value: "Media",
 	},
 ];
 
-export const SELECT_INDUSTRY_COMPANY = [
+export const SELECT_EMPLOYEE_COMPANY = [
 	{
-		label: "Technology",
-		value: "Technology",
+		label: "1,50",
+		value: "1-50",
 	},
 	{
-		label: "Economy",
-		value: "Economy",
+		label: "51,150",
+		value: "51-150",
 	},
 	{
-		label: "Creative",
-		value: "Creative",
+		label: "151,250",
+		value: "151-250",
+	},
+	{
+		label: "251,500",
+		value: "251-500",
+	},
+	{
+		label: "501,1000",
+		value: "501-1000",
+	},
+	{
+		label: "1000",
+		value: "1000-above",
 	},
 ];
 
